@@ -1,11 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Logo from './Logo';
 import { NavLink } from 'react-router';
 
 const Navbar = () => {
+     const [showMenu, setShowMenu] = useState(false)
+
+     const toggleMenu = () => {
+        setShowMenu(prev => !prev)
+
+     }
+
+     const Menu = <>
+     <div>
+
+     </div>
+     
+     </>
+
+
     return (
+
         <div>
-            <nav className='bg-amber-400 w-full mx-auto hover:bg-amber-600'>
+            <nav className='bg-amber-400 w-full mx-auto hover:bg-amber-600 relative'>
 
                 <div className='flex border-4  items-center justify-between shadow-md p-4'>
 
@@ -32,7 +48,9 @@ const Navbar = () => {
                 </div>
 
                 <div>
-                    <button className='btn btn-primary rounded-2xl'>Login</button>
+                   <div>
+                    <Logo></Logo>
+                   </div>
                 </div>
                 </div>
 
