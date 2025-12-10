@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Logo from './Logo';
-import { NavLink } from 'react-router';
+import { Link, NavLink } from 'react-router';
+import Dashboard from '../layouts/Dashboard';
 
 const Navbar = () => {
      const [showMenu, setShowMenu] = useState(false)
@@ -10,8 +11,13 @@ const Navbar = () => {
 
      }
 
-     const Menu = <>
-     <div>
+     const menu = <>
+     <div className='absolute bg-white shadow-lg rounded-2xl border border-gray-200 p-4'>
+        <div className='flex flex-col gap-2'>
+            <Link className=''>Username</Link>
+             <Link to={'dashboard'}>Your Dashboard</Link>
+              <Link>Logout</Link>
+        </div>
 
      </div>
      
@@ -48,9 +54,12 @@ const Navbar = () => {
                 </div>
 
                 <div>
-                   <div>
+                   <div onClick = {toggleMenu}>
                     <Logo></Logo>
                    </div>
+                   {
+                    showMenu && menu
+                   }
                 </div>
                 </div>
 

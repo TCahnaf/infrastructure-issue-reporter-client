@@ -22,3 +22,8 @@ nav a.active {
  
     
 }
+
+a:hover {
+  background-color: aqua;
+  
+}
