@@ -7,6 +7,8 @@ import Dashboard from "../layouts/Dashboard";
 import Auth from "../layouts/Auth";
 import Register from "../pages/Auth/Register";
 import Login from "../pages/Auth/Login";
+import PrivateRoute from "./PrivateRoute";
+import Contact from "../pages/Home/Contact";
 
 export const router  = createBrowserRouter([{
     path:"/",
@@ -17,10 +19,14 @@ export const router  = createBrowserRouter([{
             Component: HomePage
 
         },
+        {
+            path:'/contact',
+            Component:Contact
+        },
 
         {
             path: '/issues',
-            Component: IssuesList
+            element: <PrivateRoute><IssuesList></IssuesList></PrivateRoute>
         },
 
         {

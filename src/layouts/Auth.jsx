@@ -3,11 +3,17 @@ import Logo from '../components/Logo';
 import { Outlet } from 'react-router';
 import authImg from '../../public/images/authImg1.jpg'
 
+
 const Auth = () => {
+
+
+
+
+
     return (
-        <div className='p-20'>
-            <div></div>
-            <Logo></Logo>
+        <div className='p-4'>
+            <div className='sticky top-4'>
+            <Logo></Logo></div>
             <div className='flex gap-5 items-center justify-center'>
                 <div>
                     <Outlet></Outlet>

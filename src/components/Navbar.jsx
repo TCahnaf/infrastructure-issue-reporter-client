@@ -5,7 +5,7 @@ import Dashboard from '../layouts/Dashboard';
 import useAuth from '../hooks/useAuth';
 
 const Navbar = () => {
-    const {user} = useAuth();
+    const {user, logOut} = useAuth();
      const [showMenu, setShowMenu] = useState(false)
 
 
@@ -14,23 +14,16 @@ const Navbar = () => {
 
      }
 
-     const menu = <>
-     <div className='absolute bg-white shadow-lg rounded-2xl border border-gray-200 p-4'>
-        <div className='flex flex-col gap-2'>
-            <Link className=''>Username</Link>
-             <Link to={'dashboard'}>Your Dashboard</Link>
-              <Link>Logout</Link>
-        </div>
-
-     </div>
      
-     </>
+     
+     
+  
 
 
     return (
 
         <div>
-            <nav className='bg-amber-400 w-full mx-auto hover:bg-amber-600 relative'>
+            <nav className='bg-amber-400 w-full mx-auto hover:bg-amber-600 '>
 
                 <div className='flex border-4  items-center justify-between shadow-md p-4'>
 
@@ -50,7 +43,7 @@ const Navbar = () => {
                         About     
                     </NavLink>
 
-                       <NavLink to={"/issues"}>
+                       <NavLink to={"/contact"}>
                         Contact Us     
                     </NavLink>
                     
@@ -64,11 +57,22 @@ const Navbar = () => {
 
                     </div>:""}
 
-                   <div className= {`${user?"":"hidden"}`} onClick = {toggleMenu}>
-                    <Logo></Logo>
+                   <div className= {`${user?"":"hidden"}`} relative >
+                    <div className='' onClick = {toggleMenu}>
+                         <img className='h-14 w-14 rounded-full relative' src= {user?.photoURL} alt="" />
+                    </div>
+                  
                    </div>
                    {
-                    showMenu && menu
+                    showMenu && <div className={`absolute right-2 bg-white shadow-lg rounded-2xl border border-gray-200 p-4 ${!user?"hidden":" "}`}>
+        <div className='flex flex-col gap-2'>
+            <Link className=''>Hi, {user?.displayName}</Link>
+             <Link to={'dashboard'}>Your Dashboard</Link>
+             <button className="btn" onClick = {logOut}>Logout</button>
+             
+        </div>
+
+     </div>
                    }
                 </div>
                 
