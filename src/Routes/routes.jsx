@@ -4,6 +4,9 @@ import HomePage from "../pages/Home/HomePage";
 import IssuesList from "../pages/Issues/IssuesList";
 import IssueDetail from "../pages/Issues/IssueDetail";
 import Dashboard from "../layouts/Dashboard";
+import Auth from "../layouts/Auth";
+import Register from "../pages/Auth/Register";
+import Login from "../pages/Auth/Login";
 
 export const router  = createBrowserRouter([{
     path:"/",
@@ -25,6 +28,23 @@ export const router  = createBrowserRouter([{
             Component: IssueDetail
         }
     ]},
+
+    { path: '/',
+        Component: Auth,
+        children: [ {
+            path: 'register',
+            Component: Register
+        },
+
+        {
+            path: 'login',
+            Component: Login
+
+        }
+
+        ]
+
+    },
 
     {
         path: "dashboard",

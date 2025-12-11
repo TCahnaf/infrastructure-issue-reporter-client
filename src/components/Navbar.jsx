@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import Logo from './Logo';
 import { Link, NavLink } from 'react-router';
 import Dashboard from '../layouts/Dashboard';
+import useAuth from '../hooks/useAuth';
 
 const Navbar = () => {
+    const {user} = useAuth();
      const [showMenu, setShowMenu] = useState(false)
+
 
      const toggleMenu = () => {
         setShowMenu(prev => !prev)
@@ -54,13 +57,21 @@ const Navbar = () => {
                 </div>
 
                 <div>
-                   <div onClick = {toggleMenu}>
+                    {!user? <div className='flex items-center justify-center gap-2'>
+                         <Link to = {'/login'} className='btn btn-primary'>Log In</Link>
+                          <Link to = {'/register'} className='btn btn-primary'>New to our website ? Register</Link>
+
+
+                    </div>:""}
+
+                   <div className= {`${user?"":"hidden"}`} onClick = {toggleMenu}>
                     <Logo></Logo>
                    </div>
                    {
                     showMenu && menu
                    }
                 </div>
+                
                 </div>
 
             </nav>
