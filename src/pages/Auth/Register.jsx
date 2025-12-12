@@ -3,13 +3,16 @@ import { useForm } from 'react-hook-form';
 import useAuth from '../../hooks/useAuth';
 import axios from 'axios';
 import { Link, useLocation, useNavigate } from 'react-router';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
+
 
 const Register = () => {
 
     const {register, handleSubmit, formState:{errors}} = useForm();
     const {createUser, updateUser, googleSignIn } = useAuth();
-     const location = useLocation();
+    const location = useLocation();
     const navigate = useNavigate();
+    const axiosSecure = useAxiosSecure();
 
     const handleRegistration = (data) => {
         const img = data.photo[0]
@@ -25,7 +28,22 @@ const Register = () => {
                 }
 
                 updateUser(profileInfo).then().catch(error => console.log(error))
-                navigate(location.state?.from || '/', { replace: true });
+               
+
+                const userPhoto = res.data.data.url
+                const userInfo = {
+                    name:data.name,
+                    email:data.email,
+                    photo:userPhoto
+                }
+
+                axiosSecure.post('/users', userInfo).then( res => {
+                    if(res.data.insertedId){
+                         navigate(location.state?.from || '/', { replace: true });
+
+                    }
+                
+                })
 
 
             })
@@ -104,8 +122,8 @@ const Register = () => {
 </div>
             
            
-             
-            
+         
+          
         </div>
     );
 };
