@@ -1,18 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useLocation, useNavigate } from 'react-router';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
 import axios from 'axios';
 import useAuth from '../../hooks/useAuth';
 import Swal from 'sweetalert2';
+import useCitizenInfo from '../../hooks/useCitizenInfo';
 
 const ReportIssue = () => {
 
 const {register, handleSubmit, formState:{errors}} = useForm();
 const {user} = useAuth()
 
+
+
  const navigate = useNavigate();
  const axiosSecure = useAxiosSecure();
+ const userInfo = useCitizenInfo();
+
+ const unlimitedAccess = userInfo?.issuesCount === 3 && userInfo?.subscription === "free"
+
+
+
+ console.log(userInfo)
 
 const handleReport = (data) => {
   const img = data.photo[0];
@@ -110,8 +120,12 @@ const handleReport = (data) => {
 
  
 
- <div className='flex justify-center'>
-     <button className="w-1/2 btn btn-neutral mt-4">submit</button>
+ <div className='flex flex-col items-center gap-4 justify-center'>
+     <button disabled={unlimitedAccess} className="w-1/2 btn btn-neutral mt-4">submit</button>
+     <div className= {`${unlimitedAccess?"":"hidden"}`}>
+      <h1 className='text-center font-bold'>You have ran out of free issue reports, please click below to subscribe and get access to unlimited reports</h1>
+     </div>
+     <button className='btn btn-primary' >Subscribe to report </button>
 
  </div>
 </div>
