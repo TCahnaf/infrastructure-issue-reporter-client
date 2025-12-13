@@ -9,8 +9,8 @@ import Register from "../pages/Auth/Register";
 import Login from "../pages/Auth/Login";
 import PrivateRoute from "./PrivateRoute";
 import Contact from "../pages/Home/Contact";
-import CreateIssue from "../pages/Dashboard/createIssue";
 import ReportIssue from "../pages/Dashboard/ReportIssue";
+import MyIssues from "../pages/Dashboard/MyIssues";
 
 
 export const router  = createBrowserRouter([{
@@ -63,6 +63,11 @@ export const router  = createBrowserRouter([{
             {
                 path:'create-issue',
                 Component: ReportIssue
+            },
+
+            {
+                path: 'my-issues',
+                Component: MyIssues
             }
 
 

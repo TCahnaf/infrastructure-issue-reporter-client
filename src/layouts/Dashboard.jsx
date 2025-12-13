@@ -30,7 +30,7 @@ const Dashboard = () => {
 
   <div className="drawer-side is-drawer-close:overflow-visible">
     <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
-    <div className="flex min-h-full flex-col items-start bg-base-200 is-drawer-close:w-28 is-drawer-open:w-64">
+    <div className="flex min-h-full flex-col items-start bg-base-200 is-drawer-close:w-32 is-drawer-open:w-64">
 
       {/* Sidebar content here */}
       <ul className="menu w-full grow p-8 flex flex-col items-center gap-8">
@@ -51,6 +51,15 @@ const Dashboard = () => {
             <Link className='border-b font-bold text-center' to = "/dashboard/create-issue">Report An Issue !!!</Link>
             
         </li>
+
+
+         <li>
+            <Link className='border-b font-bold text-center' to = "/dashboard/my-issues">Manage your issues</Link>
+            
+        </li>
+
+
+
       </ul>
     </div>
   </div>
