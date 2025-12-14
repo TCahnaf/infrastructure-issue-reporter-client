@@ -27,7 +27,6 @@ const MyIssues = () => {
     const {data:issues = [], refetch} = useQuery({
 
         queryKey: ['myIssues', user?.email, category, status],
-        enabled: !!user?.email,
         queryFn: async () => {
             const res = await axiosSecure.get(`/issues?email=${user?.email}&category=${category}&status=${status}`)
 

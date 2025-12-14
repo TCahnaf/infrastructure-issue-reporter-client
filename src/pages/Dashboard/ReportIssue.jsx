@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useLocation, useNavigate } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
 import axios from 'axios';
 import useAuth from '../../hooks/useAuth';
@@ -106,7 +106,7 @@ const handleReport = (data) => {
  <div>
   <label className="label">Upload a photo of the issue</label>
   <input type="file" {...register('photo', {required:true})}   className="file-input" placeholder="Name" />
-   {errors.file?.type === 'required' && <p className='text-red-500'>Add a photo</p>}
+   {errors.photo?.type === 'required' && <p className='text-red-500'>Add a photo</p>}
 </div>
 </div>
 
@@ -125,7 +125,9 @@ const handleReport = (data) => {
      <div className= {`${unlimitedAccess?"":"hidden"}`}>
       <h1 className='text-center font-bold'>You have ran out of free issue reports, please click below to subscribe and get access to unlimited reports</h1>
      </div>
-     <button className='btn btn-primary' >Subscribe to report </button>
+     {unlimitedAccess &&   <Link to = "/dashboard/profile-page"><button className='btn btn-primary' >Subscribe to report </button></Link> }
+   
+     
 
  </div>
 </div>

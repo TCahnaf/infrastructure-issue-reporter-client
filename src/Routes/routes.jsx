@@ -11,6 +11,7 @@ import PrivateRoute from "./PrivateRoute";
 import Contact from "../pages/Home/Contact";
 import ReportIssue from "../pages/Dashboard/ReportIssue";
 import MyIssues from "../pages/Dashboard/MyIssues";
+import ProfileUpdate from "../components/ProfileUpdate";
 
 
 export const router  = createBrowserRouter([{
@@ -68,6 +69,11 @@ export const router  = createBrowserRouter([{
             {
                 path: 'my-issues',
                 Component: MyIssues
+            },
+
+            {
+                path: 'profile-page',
+                Component: ProfileUpdate
             }
 
 

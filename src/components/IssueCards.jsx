@@ -2,12 +2,15 @@ import React, { useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import useAxiosSecure from '../hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
+import useCitizenInfo from '../hooks/useCitizenInfo';
 
 const IssueCards = ({issue, reload}) => {
 
     const {register, handleSubmit, formState:{errors}} = useForm();
 
     const axiosSecure = useAxiosSecure();
+    const userInfo = useCitizenInfo();
+    const userBlocked = userInfo?.status === "blocked"
 
    const updateModalRef = useRef(null);
    const deleteModalRef = useRef(null);
@@ -109,8 +112,8 @@ const IssueCards = ({issue, reload}) => {
       <p>Category: {issue.category}</p>
         <p>Location: {issue.location}</p>
     <div className="card-actions justify-end">
-      <button onClick={openUpdateModal} className="btn btn-primary">Edit</button>
-      <button onClick={openDeleteModal} className="btn btn-primary">Delete</button>
+      <button disabled ={userBlocked} onClick={openUpdateModal} className="btn btn-primary">Edit</button>
+      <button disabled ={userBlocked}  onClick={openDeleteModal} className="btn btn-primary">Delete</button>
     </div>
   </div>
 </div>
@@ -156,7 +159,7 @@ const IssueCards = ({issue, reload}) => {
  <div>
   <label className="label">Upload a photo of the issue</label>
   <input type="text" {...register('photo', {required:true})}   className="input" defaultValue={issue.photo} />
-   {errors.file?.type === 'required' && <p className='text-red-500'>Add a photo url</p>}
+   {errors.photo?.type === 'required' && <p className='text-red-500'>Add a photo url</p>}
 </div>
 </div>
 
