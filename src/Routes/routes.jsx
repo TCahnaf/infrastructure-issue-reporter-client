@@ -12,6 +12,8 @@ import Contact from "../pages/Home/Contact";
 import ReportIssue from "../pages/Dashboard/ReportIssue";
 import MyIssues from "../pages/Dashboard/MyIssues";
 import ProfileUpdate from "../components/ProfileUpdate";
+import PaymentSuccess from "../pages/Payments/PaymentSuccess";
+import PaymentCancel from "../pages/Payments/PaymentCancel";
 
 
 export const router  = createBrowserRouter([{
@@ -74,6 +76,16 @@ export const router  = createBrowserRouter([{
             {
                 path: 'profile-page',
                 Component: ProfileUpdate
+            },
+
+            {
+                path: 'payment-success',
+                Component:PaymentSuccess
+            },
+
+            {
+                path: 'payment-cancelled',
+                Component: PaymentCancel
             }
 
 

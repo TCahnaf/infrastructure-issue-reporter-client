@@ -9,7 +9,9 @@ const DashStats = () => {
     return (
         <div>
 
-        {`you submitted ${userInfo.issuesCount} issues`}
+
+
+        {`you submitted ${userInfo?.issuesCount} issues`}
 
 
 

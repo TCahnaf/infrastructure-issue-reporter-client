@@ -27,8 +27,8 @@ const Dashboard = () => {
       <div className="px-4">Welcome, {userInfo?.name} </div>
     </nav>
 
-    <h1>Your Dash Stats</h1>
-    <DashStats></DashStats>
+    {/* <h1>Your Dash Stats</h1>
+    <DashStats></DashStats> */}
 
 
 

@@ -28,7 +28,26 @@ const ProfileUpdate = () => {
     })
 
    
+const handlePayment = async() => {
+    console.log('hi')
 
+    const paymentInfo = {
+
+        subscriberEmail:userInfo?.email,
+        cost:10,
+        productName:'premium-subscription'
+
+    }
+
+    const res = await axiosSecure.post('/create-checkout-session', paymentInfo)
+
+    console.log(res)
+    window.location.href = res.data.url
+    
+
+
+
+}
 
 
 
@@ -72,7 +91,7 @@ const ProfileUpdate = () => {
         <div className='flex flex-col items-center justify-center gap-8'>
 
             {
-                userInfo.status === "blocked" && <h1 className='text-center text-red-500'>You have been blocked, please contact authorities</h1>
+                userInfo?.status === "blocked" && <h1 className='text-center text-red-500'>You have been blocked, please contact authorities</h1>
             }
 
 
@@ -86,7 +105,7 @@ const ProfileUpdate = () => {
 
 
        {
-        userInfo.subscription === 'free' && <div className="mt-10 card w-96 bg-base-100 shadow-sm">
+        userInfo?.subscription === 'free' && <div className="mt-10 card w-96 bg-base-100 shadow-sm">
   <div className="card-body">
     <span className="badge badge-xs badge-warning">Most Popular</span>
     <div className="flex justify-between">
@@ -102,10 +121,16 @@ const ProfileUpdate = () => {
       
     </ul>
     <div className="mt-6">
-      <button className="btn btn-primary btn-block">Subscribe</button>
+      <button onClick={handlePayment} className="btn btn-primary btn-block">Subscribe</button>
     </div>
   </div>
 </div>
+       }
+
+       {
+         userInfo?.subscription === 'premium' && <h1 className='text-center'>Thank you for being a premium customer !!
+
+         </h1>
        }
 
 
