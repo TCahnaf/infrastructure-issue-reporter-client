@@ -3,9 +3,11 @@ import Logo from './Logo';
 import { Link, NavLink } from 'react-router';
 import Dashboard from '../layouts/Dashboard';
 import useAuth from '../hooks/useAuth';
+import useCitizenInfo from '../hooks/useCitizenInfo';
 
 const Navbar = () => {
     const {user, logOut} = useAuth();
+    const userInfo = useCitizenInfo();
      const [showMenu, setShowMenu] = useState(false)
 
 
@@ -59,14 +61,14 @@ const Navbar = () => {
 
                    <div className= {`${user?"":"hidden"}`} relative >
                     <div className='' onClick = {toggleMenu}>
-                         <img className='h-14 w-14 rounded-full relative' src= {user?.photoURL} alt="" />
+                         <img className='h-14 w-14 rounded-full relative' src= {userInfo?.photo} alt="" />
                     </div>
                   
                    </div>
                    {
                     showMenu && <div className={`absolute right-2 bg-white shadow-lg rounded-2xl border border-gray-200 p-4 ${!user?"hidden":" "}`}>
         <div className='flex flex-col gap-2'>
-            <Link className=''>Hi, {user?.displayName}</Link>
+            <Link className=''>Hi, {userInfo?.name}</Link>
              <Link to={'dashboard'}>Your Dashboard</Link>
              <button className="btn" onClick = {logOut}>Logout</button>
              

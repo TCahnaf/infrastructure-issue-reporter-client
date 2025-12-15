@@ -14,6 +14,7 @@ import MyIssues from "../pages/Dashboard/MyIssues";
 import ProfileUpdate from "../components/ProfileUpdate";
 import PaymentSuccess from "../pages/Payments/PaymentSuccess";
 import PaymentCancel from "../pages/Payments/PaymentCancel";
+import ManageStaff from "../pages/Admin/ManageStaff";
 
 
 export const router  = createBrowserRouter([{
@@ -86,6 +87,11 @@ export const router  = createBrowserRouter([{
             {
                 path: 'payment-cancelled',
                 Component: PaymentCancel
+            },
+
+            {
+                path: 'manage-staff',
+                Component: ManageStaff
             }
 
 
