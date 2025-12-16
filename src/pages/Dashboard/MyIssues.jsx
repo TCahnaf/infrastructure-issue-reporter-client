@@ -3,10 +3,12 @@ import useAuth from '../../hooks/useAuth';
 import { useQuery } from '@tanstack/react-query';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
 import IssueCards from '../../components/IssueCards';
+import useCitizenInfo from '../../hooks/useCitizenInfo';
+import { Link } from 'react-router';
 
 const MyIssues = () => {
 
-    const {user} = useAuth();
+    const userInfo = useCitizenInfo();
     const axiosSecure = useAxiosSecure();
     const [category, setCategory] = useState("");
     const [status, setStatus] = useState("");
@@ -26,9 +28,9 @@ const MyIssues = () => {
 
     const {data:issues = [], refetch} = useQuery({
 
-        queryKey: ['myIssues', user?.email, category, status],
+        queryKey: ['myIssues', userInfo?.email, category, status],
         queryFn: async () => {
-            const res = await axiosSecure.get(`/issues?email=${user?.email}&category=${category}&status=${status}`)
+            const res = await axiosSecure.get(`/issues?email=${userInfo?.email}&category=${category}&status=${status}`)
 
             return res.data;
 
@@ -40,6 +42,8 @@ const MyIssues = () => {
 
     })
 
+    
+
   
 
 
@@ -49,6 +53,7 @@ const MyIssues = () => {
     return (
         <div className='space-y-3'>
 
+          
       
 
             <h1 className='text-center font-bold'>Total number of issues found {issues.length}</h1>

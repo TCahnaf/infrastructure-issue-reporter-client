@@ -87,6 +87,14 @@ const Dashboard = () => {
 
         {/* Links for admin */}
 
+          <li>
+
+           <Link className='border-b font-bold text-center' to = "/dashboard/all-issues">Manage All Issues</Link>
+
+        </li>
+
+
+
         <li>
 
            <Link className='border-b font-bold text-center' to = "/dashboard/manage-staff">Manage Staff</Link>

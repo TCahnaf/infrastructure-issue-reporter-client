@@ -67,11 +67,16 @@ const handleReport = (data) => {
 
     
     return (
-        <div className='min-h-screen flex flex-col items-center justify-center'>
+        <div className="min-h-screen flex flex-col items-center justify-center">
+
+          {userInfo?.status === "blocked"&& <div>
+            <h1>SORRY BUT YOUR ACCOUNT IS BLOCKED</h1>
+            
+            </div>}
 
              
 
-            <form onSubmit = {handleSubmit(handleReport)}>
+            <form className={userInfo?.status === 'blocked'?"hidden":""} onSubmit = {handleSubmit(handleReport)}>
 
             <div className="fieldset bg-base-200 border-base-300 rounded-box  border min-h-screen w-[600px] p-8 ">
   <legend className="fieldset-legend">Fill out the form </legend>
@@ -121,7 +126,7 @@ const handleReport = (data) => {
  
 
  <div className='flex flex-col items-center gap-4 justify-center'>
-     <button disabled={unlimitedAccess} className="w-1/2 btn btn-neutral mt-4">submit</button>
+     <button disabled={unlimitedAccess } className="w-1/2 btn btn-neutral mt-4">submit</button>
      <div className= {`${unlimitedAccess?"":"hidden"}`}>
       <h1 className='text-center font-bold'>You have ran out of free issue reports, please click below to subscribe and get access to unlimited reports</h1>
      </div>
