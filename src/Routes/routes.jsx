@@ -15,6 +15,7 @@ import ProfileUpdate from "../components/ProfileUpdate";
 import PaymentSuccess from "../pages/Payments/PaymentSuccess";
 import PaymentCancel from "../pages/Payments/PaymentCancel";
 import ManageStaff from "../pages/Admin/ManageStaff";
+import ManagerUsers from "../pages/Admin/ManagerUsers";
 
 
 export const router  = createBrowserRouter([{
@@ -92,6 +93,11 @@ export const router  = createBrowserRouter([{
             {
                 path: 'manage-staff',
                 Component: ManageStaff
+            },
+
+            {
+                path: 'manage-users',
+                Component: ManagerUsers
             }
 
 

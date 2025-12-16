@@ -127,7 +127,9 @@ const ManageStaff = () => {
       
   
   
-       } }) 
+       } }).catch(error => {
+        console.log(error)
+       }) 
   }
 
   const handleDelete = () => {

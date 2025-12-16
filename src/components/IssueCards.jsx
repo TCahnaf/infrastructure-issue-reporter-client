@@ -1,8 +1,9 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import useAxiosSecure from '../hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
 import useCitizenInfo from '../hooks/useCitizenInfo';
+import { FcLike } from "react-icons/fc";
 
 const IssueCards = ({issue, reload}) => {
 
@@ -14,6 +15,7 @@ const IssueCards = ({issue, reload}) => {
 
    const updateModalRef = useRef(null);
    const deleteModalRef = useRef(null);
+   const [liked, setLiked] = useState(false)
 
    const openUpdateModal = () => {
 
@@ -84,6 +86,24 @@ const IssueCards = ({issue, reload}) => {
             })
         }
 
+    const voteIssue = () =>{
+            const voteType = liked ? 'dislike':'like'
+
+            axiosSecure.patch(`/issues/${issue._id}/vote`, {vote:voteType}).then( res => 
+                {
+                          if (res.data.matchedCount > 0){
+                          setLiked(!liked)
+                          reload();
+                        
+
+
+        }
+    })
+}
+
+ 
+
+
 
 
         
@@ -114,7 +134,10 @@ const IssueCards = ({issue, reload}) => {
     <div className="card-actions justify-end">
       <button disabled ={userBlocked} onClick={openUpdateModal} className="btn btn-primary">Edit</button>
       <button disabled ={userBlocked}  onClick={openDeleteModal} className="btn btn-primary">Delete</button>
+       <button disabled = {userInfo?.email === issue.userEmail} onClick={voteIssue} className='square btn'><FcLike size={30}></FcLike></button>
+      <h2>Total Votes for this issue: {issue.upvoteCount}</h2>
     </div>
+   
   </div>
 </div>
 
