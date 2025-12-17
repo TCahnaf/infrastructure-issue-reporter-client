@@ -61,14 +61,9 @@ const Dashboard = () => {
 
         {/* Links for users */}
 
-         <li>
-            <Link className='border-b font-bold text-center' to = "/dashboard">Your Dashboard!!!</Link>
-            
-        </li>
-
-
-
-        <li>
+        {userInfo?.role === 'user' && <ul>
+          
+           <li>
             <Link className='border-b font-bold text-center' to = "/dashboard/create-issue">Report An Issue !!!</Link>
             
         </li>
@@ -78,7 +73,11 @@ const Dashboard = () => {
             <Link className='border-b font-bold text-center' to = "/dashboard/my-issues">Manage your issues</Link>
             
         </li>
+</ul>}
 
+      
+
+       
         <li>
             <Link className='border-b font-bold text-center' to = "/dashboard/profile-page">view your profile</Link>
             
@@ -86,6 +85,8 @@ const Dashboard = () => {
 
 
         {/* Links for admin */}
+
+        { userInfo?.role === "admin" && <ul>
 
           <li>
 
@@ -109,6 +110,36 @@ const Dashboard = () => {
 
         </li>
 
+         <li>
+
+           <Link className='border-b font-bold text-center' to = "/dashboard/all-payments">View All Payments</Link>
+
+
+        </li>
+
+
+
+
+
+
+        </ul> }
+
+        {
+          userInfo?.role === 'staff' && <ul>
+
+            <li>
+
+           <Link className='border-b font-bold text-center' to = "/dashboard/issues-assigned">Assigned Issues</Link>
+
+
+        </li>
+
+
+
+          </ul>
+        }
+
+          
 
 
       </ul>

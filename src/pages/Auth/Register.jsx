@@ -105,7 +105,7 @@ const Register = () => {
             {errors.password?.type === 'pattern' && <p className='text-red-500'>password must be contain at least one lowercase and one uppercase letter</p>}
 
 
-          {/* <div><Link state={{ from: location.state?.from || location.pathname }} className='hover:bg-sky-500 btn' to = {'/login'}> Already a user, click here to login </Link></div> */}
+    
 
           <div>
             <Link to = "/login" className='hover:bg-sky-500 btn'>

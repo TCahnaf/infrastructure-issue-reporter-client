@@ -18,6 +18,9 @@ import ManageStaff from "../pages/Admin/ManageStaff";
 import ManagerUsers from "../pages/Admin/ManagerUsers";
 import ManageIssues from "../pages/Admin/ManageIssues";
 import AdminRoute from "./AdminRoute";
+import AllPayments from "../pages/Admin/AllPayments";
+import AssignedIssues from "../pages/Staff/AssignedIssues";
+import StaffRoute from "./StaffRoute";
 
 
 export const router  = createBrowserRouter([{
@@ -105,6 +108,15 @@ export const router  = createBrowserRouter([{
             {
                 path: 'all-issues',
                 element:<AdminRoute><ManageIssues></ManageIssues></AdminRoute>
+            },
+
+            {
+                path: 'all-payments',
+               element: <AdminRoute><AllPayments></AllPayments></AdminRoute>
+            },
+            {
+                path: 'issues-assigned',
+                element: <StaffRoute><AssignedIssues></AssignedIssues></StaffRoute>
             }
 
 

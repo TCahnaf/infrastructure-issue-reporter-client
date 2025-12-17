@@ -64,7 +64,7 @@ const MyIssues = () => {
 
              <div className='flex flex-col space-y-2'>
              <label className = "text-2xl">
-    Filter Bills By Categories
+    Filter By Categories
   </label>
             <select value={category} onChange = {handleIssueCategory}>
                  <option value="">All Categories</option>

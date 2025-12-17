@@ -39,6 +39,34 @@ const ManageIssues = () => {
         staffModalRef.current.showModal();
     }
 
+    const rejectIssue = (id) =>{
+
+        const updatedInfo = {
+            status:'rejected'
+        }
+        axiosSecure.patch(`/issue/${id}/reject`,updatedInfo).then(
+            res => {
+
+            if (res.data.matchedCount > 0){
+            refetch();
+            staffModalRef.current.close()
+            Swal.fire({
+                title: "Update Complete !!",
+                text: "Issue has been rejected successfully",
+                icon: "success"
+
+                    })
+
+     } }) 
+
+
+
+
+        
+
+
+    }
+
 
 
 
@@ -119,9 +147,10 @@ const ManageIssues = () => {
                                 
                                 </td>
                                 <td className='flex gap-4'>
+                                    
                                     <button
-                                    // disabled ={user.status === "blocked"}
-                                         onClick={openStaffModal}
+                                    disabled ={issue?.status !== "pending"}
+                                         onClick={() =>rejectIssue(issue._id)}
                                         className='btn w-24 p-4  btn-square hover:bg-primary'>
                                         Reject Issue
                                     </button>

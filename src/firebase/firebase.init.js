@@ -3,7 +3,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_apiKey ,
+  apiKey: import.meta.env.VITE_apiKey,
   authDomain:import.meta.env.VITE_authDomain,
   projectId:import.meta.env.VITE_projectId ,
   storageBucket:import.meta.env.VITE_storageBucket ,

@@ -6,10 +6,12 @@ import Swal from 'sweetalert2';
 import useAxiosSecure from '../hooks/useAxiosSecure';
 import useAuth from '../hooks/useAuth';
 import { useQuery } from '@tanstack/react-query';
+import useCitizenInfo from '../hooks/useCitizenInfo';
 
 const ProfileUpdate = () => {
 
     const {user} = useAuth();
+    const {role} = useCitizenInfo();
 
     const axiosSecure = useAxiosSecure();
 
@@ -105,7 +107,7 @@ const handlePayment = async() => {
 
 
        {
-        userInfo?.subscription === 'free' && <div className="mt-10 card w-96 bg-base-100 shadow-sm">
+        userInfo?.subscription === 'free' && <div className={`mt-10 card w-96 bg-base-100 shadow-sm ${role === 'admin' || role === 'staff'?"hidden":""}`}>
   <div className="card-body">
     <span className="badge badge-xs badge-warning">Most Popular</span>
     <div className="flex justify-between">
