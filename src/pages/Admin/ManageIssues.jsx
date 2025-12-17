@@ -142,7 +142,7 @@ const ManageIssues = () => {
                                 <td>{issue?.category}</td>
                                 <td>{issue?.status}</td>
                                 <td>{issue?.priority}</td>
-                                <td><button disabled = {!issue?.assignedStaffEmail} className='btn' onClick = {()=> openStaffModal(issue)}>Assign Staff</button>
+                                <td><button disabled = {issue?.assignedStaffEmail} className='btn' onClick = {()=> openStaffModal(issue)}>Assign Staff</button>
                                 {!issue?.assignedStaffName?<p>No Staff Assigned Yet</p>:<p>{`Assigned Staff:${issue.assignedStaffName}`}</p>}
                                 
                                 </td>

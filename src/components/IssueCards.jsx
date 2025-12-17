@@ -101,6 +101,27 @@ const IssueCards = ({issue, reload}) => {
     })
 }
 
+const handlePayment = async(id) => {
+   
+
+    const paymentInfo = {
+
+        subscriberEmail:userInfo?.email,
+        issueId:id,
+        cost:1,
+        productName:'boost-fee'
+
+    }
+
+    const res = await axiosSecure.post('/create-checkout-session', paymentInfo)
+
+    console.log(res)
+    window.location.href = res.data.url
+    
+
+
+
+}
  
 
 
@@ -137,6 +158,7 @@ const IssueCards = ({issue, reload}) => {
        <button disabled = {userInfo?.email === issue.userEmail} onClick={voteIssue} className='square btn'><FcLike size={30}></FcLike></button>
       <h2>Total Votes for this issue: {issue.upvoteCount}</h2>
     </div>
+    {issue.priority === 'normal'?<div><button onClick = {()=>handlePayment(issue._id)} className='btn'>Click here to boost this issue</button></div>:<button className='btn'>Boosted</button>}
    
   </div>
 </div>
