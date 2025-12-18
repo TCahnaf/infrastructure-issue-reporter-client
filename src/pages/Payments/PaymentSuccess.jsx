@@ -22,7 +22,8 @@ const PaymentSuccess = () => {
 
     return (
         <div>
-            <h2>Payment was successfull. Thanks for becoming a premium member</h2>
+            <h1 className='text-center font-bold'>Payment has processed successfully</h1>
+            <p className='text-center font-bold'>Thank you</p>
         </div>
     );
 };

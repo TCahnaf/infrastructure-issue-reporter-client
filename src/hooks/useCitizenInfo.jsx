@@ -5,12 +5,13 @@ import useAxiosSecure from './useAxiosSecure';
 
 const useCitizenInfo = () => {
 
-    const {user} = useAuth();
+    const {user, loading} = useAuth();
     const axiosSecure = useAxiosSecure();
 
     const {data:userInfo} = useQuery({
 
         queryKey: ['current_user', user?.email],
+        enabled: !loading && !!user?.email,
         queryFn: async () => {
             const res = await axiosSecure.get(`/user?email=${user.email}`)
 

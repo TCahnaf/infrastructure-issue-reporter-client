@@ -39,7 +39,7 @@ export const router  = createBrowserRouter([{
 
         {
             path: '/issues',
-            element: <PrivateRoute><IssuesList></IssuesList></PrivateRoute>
+            element: <IssuesList></IssuesList>
         },
 
         {
@@ -114,6 +114,7 @@ export const router  = createBrowserRouter([{
                 path: 'all-payments',
                element: <AdminRoute><AllPayments></AllPayments></AdminRoute>
             },
+
             {
                 path: 'issues-assigned',
                 element: <StaffRoute><AssignedIssues></AssignedIssues></StaffRoute>

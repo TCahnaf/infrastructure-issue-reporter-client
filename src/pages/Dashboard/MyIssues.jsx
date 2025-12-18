@@ -15,9 +15,8 @@ const MyIssues = () => {
 
     const handleIssueCategory = (e) => {
         setCategory(e.target.value)
-        console.log(e.target.value)
+       
         
-
     }
 
      const handleIssueStatus = (e) => {
@@ -29,6 +28,8 @@ const MyIssues = () => {
     const {data:issues = [], refetch} = useQuery({
 
         queryKey: ['myIssues', userInfo?.email, category, status],
+        enabled: !!userInfo?.email,
+
         queryFn: async () => {
             const res = await axiosSecure.get(`/issues?email=${userInfo?.email}&category=${category}&status=${status}`)
 

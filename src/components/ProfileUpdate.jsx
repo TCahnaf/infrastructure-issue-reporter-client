@@ -8,30 +8,18 @@ import useAuth from '../hooks/useAuth';
 import { useQuery } from '@tanstack/react-query';
 import useCitizenInfo from '../hooks/useCitizenInfo';
 
+
 const ProfileUpdate = () => {
 
     const {user} = useAuth();
-    const {role} = useCitizenInfo();
 
     const axiosSecure = useAxiosSecure();
 
-    const {data:userInfo, refetch} = useQuery({
-
-        queryKey: ['current_user', user?.email],
-        queryFn: async () => {
-            const res = await axiosSecure.get(`/user?email=${user?.email}`)
-            return res.data;
-        }
-
-
-        
-
-
-    })
+    const userInfo = useCitizenInfo();
 
    
 const handlePayment = async() => {
-    console.log('hi')
+   
 
     const paymentInfo = {
 
@@ -107,7 +95,7 @@ const handlePayment = async() => {
 
 
        {
-        userInfo?.subscription === 'free' && <div className={`mt-10 card w-96 bg-base-100 shadow-sm ${role === 'admin' || role === 'staff'?"hidden":""}`}>
+        userInfo?.subscription === 'free' && <div className={`mt-10 card w-96 bg-base-100 shadow-sm ${userInfo?.role === 'admin' || userInfo?.role === 'staff'?"hidden":""}`}>
   <div className="card-body">
     <span className="badge badge-xs badge-warning">Most Popular</span>
     <div className="flex justify-between">

@@ -4,11 +4,15 @@ import useAxiosSecure from '../hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
 import useCitizenInfo from '../hooks/useCitizenInfo';
 import { FcLike } from "react-icons/fc";
+import { useNavigate } from 'react-router';
 
-const IssueCards = ({issue, reload}) => {
 
+const IssueCards = ({issue, reload, hide}) => {
+
+
+    // const location = useLocation();
     const {register, handleSubmit, formState:{errors}} = useForm();
-
+    const navigate = useNavigate();
     const axiosSecure = useAxiosSecure();
     const userInfo = useCitizenInfo();
     const userBlocked = userInfo?.status === "blocked"
@@ -87,6 +91,9 @@ const IssueCards = ({issue, reload}) => {
         }
 
     const voteIssue = () =>{
+            if(!userInfo){
+              return navigate('/login')
+            }
             const voteType = liked ? 'dislike':'like'
 
             axiosSecure.patch(`/issues/${issue._id}/vote`, {vote:voteType}).then( res => 
@@ -94,8 +101,6 @@ const IssueCards = ({issue, reload}) => {
                           if (res.data.matchedCount > 0){
                           setLiked(!liked)
                           reload();
-                        
-
 
         }
     })
@@ -141,21 +146,37 @@ const handlePayment = async(id) => {
     return (
         <div>
 
-            <div className="card card-side bg-base-100 shadow-sm p-4">
+            <div className="card bg-base-100 card-side shadow-sm p-4  flex items-center justify-center">
+
+             
   <figure>
-    <img className='h-[256px] w-[256px] rounded-lg'
+    <img className='h-[256px] w-[256px] rounded-lg '
       src= {issue.photo}
       alt="photo" />
   </figure>
-  <div className="card-body">
-    <h2 className="card-title">{issue.title}</h2>
-    <p>What's going on: {issue.description}</p>
+  <div className = "card-body flex flex-col flex-start items-center justify-center space-y-4">
+    <div className=''>
+       <h2 className="card-title">{issue.title}</h2>
       <p>Category: {issue.category}</p>
         <p>Location: {issue.location}</p>
-    <div className="card-actions justify-end">
-      <button disabled ={userBlocked} onClick={openUpdateModal} className="btn btn-primary">Edit</button>
+    </div>
+   
+    <div className="">
+      <div className= {`${hide?"hidden":""} flex justify-center gap-2`} >
+
+        <button className = {`${hide?"hidden":""} btn btn-primary`} disabled ={userBlocked} onClick={openUpdateModal}>Edit</button>
       <button disabled ={userBlocked}  onClick={openDeleteModal} className="btn btn-primary">Delete</button>
-       <button disabled = {userInfo?.email === issue.userEmail} onClick={voteIssue} className='square btn'><FcLike size={30}></FcLike></button>
+       </div>
+
+       <div className='flex justify-center'>
+
+       <button   disabled = {userInfo?.email === issue.userEmail} onClick={voteIssue} className={`square btn hover:bg-red-800`}><FcLike size={30}></FcLike></button>
+       </div>
+
+
+
+     
+      
       <h2>Total Votes for this issue: {issue.upvoteCount}</h2>
     </div>
     {issue.priority === 'normal'?<div><button onClick = {()=>handlePayment(issue._id)} className='btn'>Click here to boost this issue</button></div>:<button className='btn'>Boosted</button>}
