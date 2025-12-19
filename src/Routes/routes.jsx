@@ -21,6 +21,9 @@ import AdminRoute from "./AdminRoute";
 import AllPayments from "../pages/Admin/AllPayments";
 import AssignedIssues from "../pages/Staff/AssignedIssues";
 import StaffRoute from "./StaffRoute";
+import DashStats from "../pages/Dashboard/DashStats";
+import DashStatsStaff from "../pages/Dashboard/DashStatsStaff";
+import DashHome from "../pages/Dashboard/DashHome";
 
 
 export const router  = createBrowserRouter([{
@@ -69,6 +72,11 @@ export const router  = createBrowserRouter([{
         path: "dashboard",
         Component: Dashboard,
         children: [
+            {
+                index:true,
+                Component: DashHome
+
+            },
 
             {
                 path:'create-issue',

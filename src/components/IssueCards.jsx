@@ -147,16 +147,16 @@ const handlePayment = async(id) => {
         <div className='p-10'>
           
 
-            <div className="card bg-base-100 card-side shadow-sm p-4  flex items-center justify-center">
+            <div className="card bg-base-100 card-side shadow-lg p-4  gap-4 flex  items-center justify-center">
 
              
   <figure>
-    <img className='h-[256px] w-[256px] rounded-lg '
-      src= {issue?.photo}
+    <img className='h-[356px] w-[256px] rounded-lg '
+      src= {issue.photo}
       alt="photo" />
   </figure>
-  <div className = "card-body flex flex-col space-y-4">
-    <div className=''>
+  <div className = "card-body flex flex-col space-y-4 border-2 rounded-2xl">
+    <div className='flex flex-col items-center border-2'>
        <h2 className="card-title">{issue.title}</h2>
       <p>Category: {issue.category}</p>
         <p>Location: {issue.location}</p>
@@ -194,11 +194,15 @@ const handlePayment = async(id) => {
 
 
 
-    <Link to = {`/issue/details/${issue._id}`} className={`${location.pathname.includes('/issue/details')?'hidden':''} btn`}>Click Here to view details on this issue</Link>
        </div>
    
   </div>
+  
+ 
 </div>
+
+<div className='flex justify-center '> <Link to = {`/issue/details/${issue._id}`} className={`${location.pathname.includes('/issue/details')?'hidden':''} btn`}>Click Here to view more details on this issue</Link></div>
+  
 
 
 <dialog ref = {updateModalRef} className="modal modal-bottom sm:modal-middle">
