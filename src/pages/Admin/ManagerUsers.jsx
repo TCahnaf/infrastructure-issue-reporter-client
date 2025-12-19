@@ -73,14 +73,13 @@ const ManagerUsers = () => {
 
 
     return (
-        <div>
+        <div className='flex flex-col space-y-6'>
             
-<h1>All staff members </h1>
+<h1 className='text-white text-center font-bold text-3xl'>All Users</h1>
 
 
             <div className="overflow-x-auto">
-                <table className="table table-zebra">
-                    {/* head */}
+                <table className="table bg-blue-300">
                     <thead>
                         <tr>
                             <th></th>
@@ -102,7 +101,7 @@ const ManagerUsers = () => {
                                     <button
                                     disabled ={user.status === "blocked"}
                                          onClick={() => updateStatusBlock(user._id)}
-                                        className='btn w-24 p-4  btn-square hover:bg-primary'>
+                                        className='btn w-24 p-4 bg-white btn-square hover:bg-primary'>
                                         Block 
                                     </button>
                                      <button

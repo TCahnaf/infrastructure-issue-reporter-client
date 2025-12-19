@@ -10,11 +10,11 @@ import DashStats from '../pages/Dashboard/DashStats';
 
 
 const Dashboard = () => {
-
     const {user} = useAuth();
     const userInfo = useCitizenInfo();
     
     return (
+      <div className='min-h-screen bg-cover bg-center bg-fixed' style={{backgroundImage: "url('/images/ddf6.jpg')"}}>
       <div className="drawer lg:drawer-open">
   <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
   <div className="drawer-content">
@@ -41,7 +41,7 @@ const Dashboard = () => {
 
   <div className="drawer-side is-drawer-close:overflow-visible">
     <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
-    <div className="flex min-h-full flex-col items-start bg-base-200 is-drawer-close:w-32 is-drawer-open:w-64">
+    <div className="flex min-h-full flex-col items-start bg-base-200 is-drawer-close:w-48 is-drawer-open:w-64">
 
       
 
@@ -49,7 +49,7 @@ const Dashboard = () => {
       <ul className="menu w-full grow p-8 flex flex-col items-center gap-8">
         {/* List item */}
         <li>
-          <Link to = "/" className=" border-b is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Homepage">
+          <Link to = "/" className=" is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Homepage">
             {/* Home icon */}
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor" className="my-1.5 inline-block size-4"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
             
@@ -61,36 +61,39 @@ const Dashboard = () => {
 
         {/* Links for users */}
 
-        {userInfo?.role === 'user' && <ul>
+        {userInfo?.role === 'user' && <>
           
            <li>
-            <Link className='border-b font-bold text-center' to = "/dashboard/create-issue">Report An Issue !!!</Link>
+            <Link className=' hover:bg-blue-500 border-2 font-bold text-center' to = "/dashboard/create-issue">Report An Issue !!!</Link>
             
         </li>
 
 
          <li>
-            <Link className='border-b font-bold text-center' to = "/dashboard/my-issues">Manage your issues</Link>
+            <Link className=' hover:bg-blue-500 border-2 font-bold text-center' to = "/dashboard/my-issues">Manage your issues</Link>
             
         </li>
-</ul>}
+</>}
 
       
 
        
         <li>
-            <Link className='border-b font-bold text-center' to = "/dashboard/profile-page">view your profile</Link>
+            <Link className=' hover:bg-blue-500 border-2 font-bold text-center' to = "/dashboard/profile-page">view your profile</Link>
             
         </li>
+
+        
+
 
 
         {/* Links for admin */}
 
-        { userInfo?.role === "admin" && <ul>
+        { userInfo?.role === "admin" && <>
 
           <li>
 
-           <Link className='border-b font-bold text-center' to = "/dashboard/all-issues">Manage All Issues</Link>
+           <Link className=' hover:bg-blue-500 border-2 font-bold text-center' to = "/dashboard/all-issues">Manage All Issues</Link>
 
         </li>
 
@@ -98,21 +101,21 @@ const Dashboard = () => {
 
         <li>
 
-           <Link className='border-b font-bold text-center' to = "/dashboard/manage-staff">Manage Staff</Link>
+           <Link className=' hover:bg-blue-500 border-2 font-bold text-center' to = "/dashboard/manage-staff">Manage Staff</Link>
 
 
         </li>
 
            <li>
 
-           <Link className='border-b font-bold text-center' to = "/dashboard/manage-users">Manage Users</Link>
+           <Link className=' hover:bg-blue-500 border-2 font-bold text-center' to = "/dashboard/manage-users">Manage Users</Link>
 
 
         </li>
 
          <li>
 
-           <Link className='border-b font-bold text-center' to = "/dashboard/all-payments">View All Payments</Link>
+           <Link className=' hover:bg-blue-500 border-2 font-bold text-center' to = "/dashboard/all-payments">View All Payments</Link>
 
 
         </li>
@@ -122,15 +125,14 @@ const Dashboard = () => {
 
 
 
-        </ul> }
+        </> }
 
         {
           userInfo?.role === 'staff' && <ul>
 
             <li>
 
-           <Link className='border-b font-bold text-center' to = "/dashboard/issues-assigned">Assigned Issues</Link>
-
+           <Link className=' hover:to-blue-500 border-2 font-bold text-center' to = "/dashboard/issues-assigned">Assigned Issues</Link>
 
         </li>
 
@@ -139,12 +141,19 @@ const Dashboard = () => {
           </ul>
         }
 
+          <li>
+            <Link className=' hover:bg-blue-500 border-2 font-bold text-center' to = "/dashboard">Issue Stats</Link>
+            
+        </li>
+
+
           
 
 
       </ul>
     </div>
   </div>
+</div>
 </div>
     );
 };

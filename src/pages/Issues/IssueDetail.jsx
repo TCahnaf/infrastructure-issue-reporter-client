@@ -3,6 +3,7 @@ import React from 'react';
 import { useParams } from 'react-router';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
 import IssueCards from '../../components/IssueCards';
+import nycImg from '../../../public/images/wallpaper.jpg'
 
 const IssueDetail = () => {
     const {id} = useParams();
@@ -83,10 +84,10 @@ const IssueDetail = () => {
         
 </div>
 
-<div className="hero bg-base-200 min-h-screen">
+<div className="hero bg-blue-500 min-h-screen">
   <div className="hero-content flex-col lg:flex-row-reverse">
     <img
-      src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
+      src={nycImg}
       className="max-w-sm rounded-lg shadow-2xl"
     />
     <div>

@@ -4,9 +4,11 @@ import useCitizenInfo from '../../hooks/useCitizenInfo';
 import IssueCards from '../../components/IssueCards';
 import { useQuery } from '@tanstack/react-query';
 
+
 document.title = 'issues-list'
 
 const IssuesList = () => {
+
 
    
     const axiosSecure = useAxiosSecure();
@@ -49,7 +51,7 @@ const IssuesList = () => {
 
 
     return (
-        <div className='p-20 space-y-4'>
+        <div className='p-20 space-y-4 text-white'>
             <div className='flex gap-4 border-2 rounded-lg justify-between items-center px-6 p-2'>
                <div className='flex flex-col space-y-2'>
              <label className = "text-2xl">
@@ -78,8 +80,8 @@ const IssuesList = () => {
 
             </div>
 
-            <div>
-                <label className="input">
+            <div className='text-black'>
+                <label className="input text-black">
   <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <g
       strokeLinejoin="round"
@@ -92,7 +94,7 @@ const IssuesList = () => {
       <path d="m21 21-4.3-4.3"></path>
     </g>
   </svg>
-  <input onChange={handleIssueSearch} type="search" required placeholder="Search" />
+  <input className='text-black' onChange={handleIssueSearch} type="search" required placeholder="Search" />
 </label>
             </div>
             </div>

@@ -49,8 +49,8 @@ const DashStats = () => {
 
     return (
         
-        <div className='flex flex-col space-y-10 items-center justify-center'>
-            <h1 className='text-4xl font-bold text-center'>A summary of your activity</h1>
+        <div className='flex flex-col space-y-10 items-center justify-center pt-20'>
+            <h1 className='text-white text-4xl font-bold text-center'>Summary of your activity</h1>
         
         <div className='flex flex-wrap gap-4'>
             

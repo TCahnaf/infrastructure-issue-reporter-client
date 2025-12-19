@@ -78,7 +78,7 @@ const handlePayment = async() => {
 
     return (
 
-        <div className='flex flex-col items-center justify-center gap-8'>
+        <div className='pt-20 flex flex-col items-center justify-center gap-16'>
 
             {
                 userInfo?.status === "blocked" && <h1 className='text-center text-red-500'>You have been blocked, please contact authorities</h1>
@@ -90,8 +90,9 @@ const handlePayment = async() => {
                 <img className='h-48 w-48 rounded-full' src= {userInfo?.photo} alt="" />
  
 
-    <button onClick={openModal} className='btn btn-primary'>Click Here to Update your profile</button>
        </div>
+
+    <button onClick={openModal} className='btn btn-primary'>Click Here to Update your profile</button>
 
 
        {
@@ -118,7 +119,7 @@ const handlePayment = async() => {
        }
 
        {
-         userInfo?.subscription === 'premium' && <h1 className='text-center'>Thank you for being a premium customer !!
+         userInfo?.subscription === 'premium' && <h1 className='text-center text-white text-3xl'>Thank you for being a premium customer !!
 
          </h1>
        }

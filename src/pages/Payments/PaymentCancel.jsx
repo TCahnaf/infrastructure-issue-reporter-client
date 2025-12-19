@@ -2,8 +2,8 @@ import React from 'react';
 
 const PaymentCancel = () => {
     return (
-        <div>
-            <h1>Payment Was Cancelled</h1>
+        <div className='text-4xl text-red-700'>
+            <h1>Payment Was Unsuccessful</h1>
             
         </div>
     );

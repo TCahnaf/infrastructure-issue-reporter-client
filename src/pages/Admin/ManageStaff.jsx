@@ -160,13 +160,14 @@ const ManageStaff = () => {
 
 
     return (
-        <div>
+      <div>
+        <div className='flex flex-col space-y-6'>
 
-            <h1>All staff members </h1>
+            <h1 className='text-white text-center font-bold text-3xl'>All staff members </h1>
 
 
             <div className="overflow-x-auto">
-                <table className="table table-zebra">
+                <table className="table bg-blue-300">
                     {/* head */}
                     <thead>
                         <tr>
@@ -207,28 +208,17 @@ const ManageStaff = () => {
 
 
 
+            
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <button onClick={openStaffModal} className='btn'>Add a new staff</button>
 
 
         
+  </div>
 
-
+  <div className='flex justify-center mt-20'><button  onClick={openStaffModal} className='btn btn-primary w-36 h-12 rounded-lg'>Add a new staff</button>
+</div>
 
 
 
@@ -344,6 +334,7 @@ const ManageStaff = () => {
 
 
             
+      
         </div>
     );
 };

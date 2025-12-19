@@ -60,11 +60,11 @@ const AssignedIssues = () => {
 
 
     return (
-        <div>
+        <div className='flex flex-col space-y-6  '>
 
-            <h1>Isses Assigned To You, Let's get to work !!!</h1>
+            <h1 className='text-white text-3xl font-bold text-center'>Issues Assigned To You, Let's get to work !!!</h1>
             <div className="overflow-x-auto">
-                <table className="table table-zebra">
+                <table className="table bg-sky-300">
                     <thead>
                         <tr>
                             <th></th>

@@ -111,18 +111,18 @@ const ManageIssues = () => {
 
 
     return (
-        <div>
+        <div className='flex flex-col space-y-6'>
 
             
 
 
 
 
-            <h1>All issues registered in the system </h1>
+            <h1 className='text-white text-center font-bold text-3xl'>All issues registered in the system </h1>
 
 
             <div className="overflow-x-auto">
-                <table className="table table-zebra">
+                <table className="table bg-blue-300">
                     {/* head */}
                     <thead>
                         <tr>

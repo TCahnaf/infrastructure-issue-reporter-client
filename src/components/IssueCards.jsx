@@ -147,7 +147,7 @@ const handlePayment = async(id) => {
         <div className='p-10'>
           
 
-            <div className="card bg-base-100 card-side shadow-lg p-4  gap-4 flex  items-center justify-center">
+            <div className="card text-black font-bold bg-base-300 from-[#0F172A] via-[#2563EB] to-[#4F46E5]  card-side shadow-lg p-4  gap-4 flex  items-center justify-center">
 
              
   <figure>
