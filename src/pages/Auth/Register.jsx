@@ -39,7 +39,9 @@ const Register = () => {
 
                 axiosSecure.post('/users', userInfo).then( res => {
                     if(res.data.insertedId){
-                         navigate(location.state?.from || '/', { replace: true });
+                         navigate(location.state?.from && location.state?.from !== '/login' 
+                                ? location.state.from 
+                                : '/', { replace: true });
 
                     }
                 
@@ -108,7 +110,7 @@ const Register = () => {
     
 
           <div>
-            <Link to = "/login" className='hover:bg-sky-500 btn'>
+            <Link to = "/login" state={location.state} className='hover:bg-sky-500 btn'>
               Already a user, click here to login 
 
             </Link>

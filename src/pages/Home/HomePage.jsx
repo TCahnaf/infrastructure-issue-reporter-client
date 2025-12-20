@@ -12,7 +12,7 @@ const HomePage = () => {
     const axiosSecure = useAxiosSecure();
 
 
-const {data:issuesResolved = []} = useQuery({
+const {data, refetch} = useQuery({
 
         queryKey: ['issueCount'],
         queryFn: async () => {
@@ -21,7 +21,7 @@ const {data:issuesResolved = []} = useQuery({
         }
 
     })
-
+const issuesResolved = data?.result;
 
 
 
@@ -44,7 +44,7 @@ const {data:issuesResolved = []} = useQuery({
 
              <div className='grid grid-cols-3'>
                 {
-                    issuesResolved.map(issue => <IssueCards key={issue._id} issue={issue} hide={true} ></IssueCards>)
+                    issuesResolved?.map(issue => <IssueCards key={issue._id} issue={issue} reload={refetch} hide={true} ></IssueCards>)
                 }
 
 

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
-import useCitizenInfo from '../../hooks/useCitizenInfo';
 import IssueCards from '../../components/IssueCards';
 import { useQuery } from '@tanstack/react-query';
 
@@ -9,43 +8,62 @@ document.title = 'issues-list'
 
 const IssuesList = () => {
 
+  
 
    
     const axiosSecure = useAxiosSecure();
     const [category, setCategory] = useState("");
     const [status, setStatus] = useState("");
     const [search, setSearch] = useState("");
+    const [currentPage, setCurrentPage] = useState(1);
+    const issuesPerPage = 6;
+ 
 
     const handleIssueCategory = (e) => {
         setCategory(e.target.value)
+        setCurrentPage(1)
         
     }
 
      const handleIssueStatus = (e) => {
         setStatus(e.target.value)
+        setCurrentPage(1)
    
     }
 
     const handleIssueSearch = (e) => {
         setSearch(e.target.value)
+        setCurrentPage(1)
     }
 
+  
 
-    const {data:issues = [], refetch} = useQuery({
 
-        queryKey: ['myIssues', category, status, search],
+    const {data, refetch} = useQuery({
+
+        queryKey: ['myIssues', category, status, search, currentPage],
         queryFn: async () => {
-            const res = await axiosSecure.get(`/issues?category=${category}&status=${status}&search=${search}`)
+            const res = await axiosSecure.get(`/issues?page=${currentPage}&size=${issuesPerPage}&category=${category}&status=${status}&search=${search}`)
+
 
             return res.data;
-
         }
+
+     
 
 
         
 
 
     })
+    const issues = data?.result || []
+    const totalCount = data?.total || 0;
+    const totalIssues = Math.ceil(totalCount/issuesPerPage)
+ 
+
+    
+
+    
 
 
 
@@ -106,7 +124,23 @@ const IssuesList = () => {
             {issues.map(issue => <IssueCards key = {issue._id}issue={issue} reload={refetch} hide={true}></IssueCards>)}
             </div>
 
-            
+            <div className='flex gap-2 justify-center text-white'>
+
+
+
+
+
+      {
+      [...Array(totalIssues).keys()].map((i) => (
+      
+      <button onClick={() => setCurrentPage(i + 1)} 
+                        className={`btn ${currentPage === i + 1 ? 'btn-primary' : 'btn-outline'}`}
+                    >
+                        {i + 1}</button>))
+      }
+
+            </div>
+                  
         </div>
     );
 };

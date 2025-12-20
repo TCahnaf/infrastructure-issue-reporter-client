@@ -70,7 +70,7 @@ const handleReport = (data) => {
         <div className="min-h-screen flex flex-col items-center justify-center">
 
           {userInfo?.status === "blocked"&& <div>
-            <h1>SORRY BUT YOUR ACCOUNT IS BLOCKED</h1>
+            <h1 className='text-white text-center text-3xl'>SORRY BUT YOUR ACCOUNT IS BLOCKED</h1>
             
             </div>}
 

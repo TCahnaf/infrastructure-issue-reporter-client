@@ -1,7 +1,7 @@
 import React from 'react';
 import Logo from '../components/Logo';
 import { Outlet } from 'react-router';
-import authImg from '../../src/assets/Images/authImg1.jpg'
+import authImg from '../../public/images/authImg1.jpg'
 
 
 const Auth = () => {
@@ -11,7 +11,12 @@ const Auth = () => {
 
 
     return (
-        <div className='p-4'>
+        <div className='p-4 bg-gradient-to-br from-zinc-200 via-white to-zinc-300
+
+
+
+
+'> 
             <div className='sticky top-4'>
             <Logo></Logo></div>
             <div className='flex gap-5 items-center justify-center'>

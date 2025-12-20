@@ -1,11 +1,11 @@
 import React from 'react';
-import logoImg from '../../src/assets/Images/logo.png'
+import logoImg from '../../public/images/logo.png'
 
 const Logo = () => {
     return (
-        <div className='flex flex-col items-center justify-center'>
-            <p className='font-bold'>Welcome to Rapid City !!!</p>
-            <img className='h-16 w-16 rounded-full' src = {logoImg} alt="" />
+        <div className='flex flex-col gap-2 items-center justify-center'>
+            <p className='font-bold text-xl'>Welcome to Rapid City !!!</p>
+            <img className='h-28 w-28 rounded-full' src = {logoImg} alt="" />
 
            
         </div>

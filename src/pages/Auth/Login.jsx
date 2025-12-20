@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import useAuth from '../../hooks/useAuth';
 import { useForm } from 'react-hook-form';
@@ -8,6 +8,7 @@ const Login = () => {
     const {signIn, googleSignIn} = useAuth();
      const location = useLocation();
     const navigate = useNavigate();
+    const [error, setError] = useState("");
 
     const handleLogIn = (data) => {
         
@@ -16,7 +17,7 @@ const Login = () => {
              navigate(location.state?.from || '/', { replace: true })
                 
      } ).catch( error => {
-        console.log(error)
+        setError("Invalid Credentials !!! Please Try Again");
      })
      } 
 
@@ -57,6 +58,7 @@ const Login = () => {
           <label className="label">Password</label>
           <input type="password" {...register('password', {required:true})} className="input" placeholder="Password" />
              {errors.password?.type === 'required' && <p className='text-red-500'>Add a password</p>}
+             {error && <p className="text-red-400 text-xs">{error}</p>}
 
           <div><Link className='btn hover:bg-sky-500' state={{ from: location.state?.from || location.pathname }}  to = {'/register'}> New user? click here to Register</Link></div>
           <button className="btn btn-neutral mt-4">Login</button>

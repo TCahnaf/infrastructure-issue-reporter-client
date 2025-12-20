@@ -24,6 +24,7 @@ import StaffRoute from "./StaffRoute";
 import DashStats from "../pages/Dashboard/DashStats";
 import DashStatsStaff from "../pages/Dashboard/DashStatsStaff";
 import DashHome from "../pages/Dashboard/DashHome";
+import AboutUs from "../pages/Home/AboutUs";
 
 
 export const router  = createBrowserRouter([{
@@ -38,6 +39,11 @@ export const router  = createBrowserRouter([{
         {
             path:'/contact',
             Component:Contact
+        },
+
+        {
+            path: '/about',
+            Component: AboutUs
         },
 
         {

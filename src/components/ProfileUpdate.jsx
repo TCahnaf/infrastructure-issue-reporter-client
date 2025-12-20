@@ -7,11 +7,11 @@ import useAxiosSecure from '../hooks/useAxiosSecure';
 import useAuth from '../hooks/useAuth';
 import { useQuery } from '@tanstack/react-query';
 import useCitizenInfo from '../hooks/useCitizenInfo';
+import PDF from '../pages/Dashboard/PDF';
 
 
 const ProfileUpdate = () => {
 
-    const {user} = useAuth();
 
     const axiosSecure = useAxiosSecure();
 
@@ -74,14 +74,27 @@ const handlePayment = async() => {
 
 
      } }) 
+
+
 }
+      const {data:payments = []} = useQuery({
+
+        queryKey: ['userPayments', userInfo?.email],
+        enabled: !!userInfo?.email,
+        queryFn: async () => {
+            const res = await axiosSecure.get(`/user-payments?email=${userInfo?.email}`)
+            return res.data;
+        }
+
+       })
+
 
     return (
 
         <div className='pt-20 flex flex-col items-center justify-center gap-16'>
 
             {
-                userInfo?.status === "blocked" && <h1 className='text-center text-red-500'>You have been blocked, please contact authorities</h1>
+                userInfo?.status === "blocked" && <h1 className='text-center text-3xl text-red-500'>You have been blocked, please contact authorities</h1>
             }
 
 
@@ -118,11 +131,14 @@ const handlePayment = async() => {
 </div>
        }
 
+       {<PDF paymentInfo={payments}></PDF>}
+
        {
          userInfo?.subscription === 'premium' && <h1 className='text-center text-white text-3xl'>Thank you for being a premium customer !!
 
          </h1>
        }
+
 
 
 <dialog  className="modal" ref={updateModal}>
@@ -161,6 +177,8 @@ const handlePayment = async() => {
     </div>
   </div>
 </dialog>
+
+
 
 
             

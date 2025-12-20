@@ -147,7 +147,7 @@ const handlePayment = async(id) => {
         <div className='p-10'>
           
 
-            <div className="card text-black font-bold bg-base-300 from-[#0F172A] via-[#2563EB] to-[#4F46E5]  card-side shadow-lg p-4  gap-4 flex  items-center justify-center">
+            <div className="card text-black font-bold bg-base-300 hover:bg-blue-500 card-side shadow-lg p-4  gap-4 flex  items-center  rounded-4xl">
 
              
   <figure>
@@ -155,7 +155,7 @@ const handlePayment = async(id) => {
       src= {issue.photo}
       alt="photo" />
   </figure>
-  <div className = "card-body flex flex-col space-y-4 border-2 rounded-2xl">
+  <div className = "card-body flex flex-col space-y-4 border-2  ">
     <div className='flex flex-col items-center border-2'>
        <h2 className="card-title">{issue.title}</h2>
       <p>Category: {issue.category}</p>
@@ -171,14 +171,15 @@ const handlePayment = async(id) => {
 
        <p className='btn'>issue status: {issue.status}</p>
 
-       <div className='flex justify-center items-center gap-2'>
+       <div className='flex flex-col items-center  p-2'>
 
-       <button   disabled = {userInfo?.email === issue.userEmail || hasVoted} onClick={voteIssue} className={`square btn hover:bg-red-800`}><FcLike size={30}></FcLike></button>
+       <p>Click to upvote !</p>
+       <button   disabled = {userInfo?.email === issue.userEmail || hasVoted} onClick={voteIssue} className={`square btn hover:bg-red-800`}><FcLike size={30}></FcLike> votes: {issue.upvoteCount}</button>
           
-      <h2>Total Votes for this issue: {issue.upvoteCount}</h2>
+
        </div> 
 
-       {issue.priority === "normal"?<p className='btn'>Normal Priority</p>:<p className='btn bg-amber-400'>Boosted !!!</p>} 
+       {issue.priority === "normal"?<p className='btn'>Normal Priority</p>:<p className='btn bg-amber-400'>High Priority</p>} 
 
        {issue.assignedStaffName?<p className='btn'>Assigned Staff: {issue.assignedStaffName}</p>:""}
 

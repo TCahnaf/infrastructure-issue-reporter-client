@@ -6,7 +6,7 @@ const HowItWorks = () => {
             <h1 className='text-white text-3xl font-bold'>How do we do it ? </h1>
             <ul className="timeline timeline-vertical">
   <li>
-    <div className="timeline-start timeline-box text-lg hover:bg-amber-300">User first submit's a form with details on where they see the issue.</div>
+    <div className="timeline-start timeline-box text-lg hover:bg-amber-300">User first submit's a form with details on the issue.</div>
     <div className="timeline-middle">
       <svg
         xmlns="http://www.w3.org/2000/svg"
