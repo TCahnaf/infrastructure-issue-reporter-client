@@ -6,7 +6,9 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import { useQuery } from '@tanstack/react-query';
 
+
 const ManageStaff = () => {
+  document.title = 'all-staff'
 
     const updateModalRef = useRef(null);
     const deleteModalRef = useRef(null);

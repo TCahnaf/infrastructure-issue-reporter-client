@@ -7,6 +7,8 @@ import useAxiosSecure from '../../hooks/useAxiosSecure';
 
 
 const Register = () => {
+  document.title = 'register'
+
 
     const {register, handleSubmit, formState:{errors}} = useForm();
     const {createUser, updateUser, googleSignIn } = useAuth();
@@ -126,6 +128,8 @@ const Register = () => {
 </button></div>
       </div>
     </div>
+     <div className='btn btn-primary'><Link to = "/">Back to home page</Link> </div>
+   
   </div>
   
 </div>

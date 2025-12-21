@@ -27,8 +27,6 @@ const Dashboard = () => {
       <div className="px-4">Welcome, {userInfo?.name} </div>
     </nav>
 
-    {/* <h1>Your Dash Stats</h1>
-    <DashStats></DashStats> */}
 
 
 
@@ -39,9 +37,9 @@ const Dashboard = () => {
    
   </div>
 
-  <div className="drawer-side is-drawer-close:overflow-visible">
+  <div className="drawer-side z-40 is-drawer-close:overflow-visible">
     <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
-    <div className="flex min-h-full flex-col items-start bg-base-200 is-drawer-close:w-48 is-drawer-open:w-64">
+    <div className="flex min-h-full flex-col items-start bg-base-200 is-drawer-close:w-32 lg:is-drawer-open:w-64">
 
       
 
@@ -132,7 +130,7 @@ const Dashboard = () => {
 
             <li>
 
-           <Link className=' hover:to-blue-500 border-2 font-bold text-center' to = "/dashboard/issues-assigned">Assigned Issues</Link>
+           <Link className=' hover:bg-blue-500 border-2 font-bold text-center' to = "/dashboard/issues-assigned">Assigned Issues</Link>
 
         </li>
 

@@ -4,7 +4,9 @@ import DashStatsStaff from './DashStatsStaff';
 import DashStats from './DashStats';
 import DashStatsAdmin from './DashStatsAdmin';
 
+
 const DashHome = () => {
+    document.title = 'dashboard'
 
     const userInfo = useCitizenInfo();
 

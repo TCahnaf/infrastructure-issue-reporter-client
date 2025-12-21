@@ -4,11 +4,12 @@ import IssueCards from '../../components/IssueCards';
 import { useQuery } from '@tanstack/react-query';
 
 
-document.title = 'issues-list'
 
 const IssuesList = () => {
 
+document.title = 'issues-list'
   
+
 
    
     const axiosSecure = useAxiosSecure();
@@ -70,12 +71,12 @@ const IssuesList = () => {
 
     return (
         <div className='p-20 space-y-4 text-white'>
-            <div className='flex gap-4 border-2 rounded-lg justify-between items-center px-6 p-2'>
+            <div className='flex flex-col lg:flex-row gap-4 border-2 rounded-lg justify-between items-center px-6 p-2'>
                <div className='flex flex-col space-y-2'>
              <label className = "text-2xl">
     Filter By Categories
   </label>
-            <select className='border-2' value={category} onChange = {handleIssueCategory}>
+            <select className='border-2 bg-gray-400 ' value={category} onChange = {handleIssueCategory}>
                  <option value="">All Categories</option>
                 <option value="infrastructure">Infrastructure Damage</option>
                 <option value="garbage">Garbage overflow</option>
@@ -88,7 +89,7 @@ const IssuesList = () => {
     Filter By Status
   </label>
 
-              <select className='border-2' value={status} onChange = {handleIssueStatus}>
+              <select className='border-2 bg-gray-400' value={status} onChange = {handleIssueStatus}>
                 <option value="">All Status</option>
                 <option value="pending">Pending</option>
                 <option value="in-progress">In progress</option>
@@ -117,7 +118,7 @@ const IssuesList = () => {
             </div>
             </div>
 
-            <div className='grid grid-cols-2 gap-5 items-center' >
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-5 items-center' >
 
 
 

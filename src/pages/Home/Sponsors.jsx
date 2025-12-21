@@ -13,7 +13,7 @@ const sponsors = [sponsor1,sponsor2, sponsor3, sponsor4, sponsor5, sponsor1, spo
 
 const Sponsors = () => {
     return (
-       <div className="w-full h-64 py-10 overflow-hidden">
+       <div className="w-full h-18 lg:h-64 py-10 overflow-hidden">
             <Swiper
                 modules={[Autoplay]}
                 loop={true}

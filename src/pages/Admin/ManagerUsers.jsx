@@ -4,6 +4,7 @@ import useAxiosSecure from '../../hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
 
 const ManagerUsers = () => {
+    document.title = 'manage-users';
 
     const axiosSecure = useAxiosSecure();
 

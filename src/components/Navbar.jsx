@@ -27,7 +27,7 @@ const Navbar = () => {
         <div className='w-full'>
             <nav className='bg-transparent  justify-between  w-full  text-white px-8'>
 
-                <div className='flex  items-center justify-between  p-4'>
+                <div className='flex flex-col lg:flex-row items-center justify-between p-4'>
 
                 <div>
                     <Logo></Logo>
@@ -61,16 +61,17 @@ const Navbar = () => {
 
                    <div className= {`${user? "":"hidden"}`} relative >
                     <div className='' onClick = {toggleMenu}>
-                         <img className='h-32 w-32 rounded-full relative' src= {userInfo?.photo} alt="" />
+                         <img className='h-24 w-24 rounded-full relative' src= {userInfo?.photo} alt="" />
                     </div>
                   
                    </div>
                    {
-                    showMenu && <div className={`absolute right-2 bg-blue-500 shadow-lg rounded-2xl border border-gray-200 p-4 ${!user?"hidden":" "}`}>
-        <div className='flex flex-col gap-2 text-black space-y-4'>
-            <Link className=' text-center'>Hi, {userInfo?.name}</Link>
-             <Link className='border-b btn text-center' to={'dashboard'}>Your Dashboard</Link>
-             <button className="btn border-2" onClick = {logOut}>Logout</button>
+                    showMenu && <div className={`absolute right-2 bg-[#E2E8F0]  shadow-lg rounded-2xl border border-gray-200 p-4 ${!user?"hidden":" "}`}>
+        <div className='flex flex-col items-center  gap-2 w-auto text-black space-y-4'>
+            <Link className='text-center'>Hi, {userInfo?.name}</Link>
+            <div className='flex gap-2'> <Link className='  btn text-center' to={'dashboard'}>Your Dashboard</Link>
+             <button className="btn " onClick = {logOut}>Logout</button></div>
+           
              
         </div>
 

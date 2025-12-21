@@ -147,16 +147,17 @@ const handlePayment = async(id) => {
         <div className='p-10'>
           
 
-            <div className="card text-black font-bold bg-base-300 hover:bg-blue-500 card-side shadow-lg p-4  gap-4 flex  items-center  rounded-4xl">
+            <div className="card  text-black font-bold bg-[#E2E8F0] hover:bg-blue-500 card-side shadow-lg p-4  gap-4 flex flex-col lg:flex-row  items-center rounded-xl  md:rounded-2xl">
 
              
   <figure>
-    <img className='h-[356px] w-[256px] rounded-lg '
+    <img className=' w-32 h-32 md:h-64 md:w-32
+    lg:h-[356px] lg:w-[256px] rounded-lg '
       src= {issue.photo}
       alt="photo" />
   </figure>
   <div className = "card-body flex flex-col space-y-4 border-2  ">
-    <div className='flex flex-col items-center border-2'>
+    <div className='flex flex-col items-center border-2 w-48 px-2'>
        <h2 className="card-title">{issue.title}</h2>
       <p>Category: {issue.category}</p>
         <p>Location: {issue.location}</p>
@@ -169,7 +170,7 @@ const handlePayment = async(id) => {
       <button disabled ={userBlocked}  onClick={openDeleteModal} className="btn btn-primary">Delete</button>
        </div>
 
-       <p className='btn'>issue status: {issue.status}</p>
+       <p className='btn'> status: {issue.status}</p>
 
        <div className='flex flex-col items-center  p-2'>
 

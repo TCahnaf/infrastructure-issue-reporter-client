@@ -6,6 +6,7 @@ import IssueCards from '../../components/IssueCards';
 import nycImg from '../../../public/images/wallpaper.jpg'
 
 const IssueDetail = () => {
+   document.title = 'issue-details';
     const {id} = useParams();
     const axiosSecure = useAxiosSecure();
 
@@ -41,7 +42,7 @@ const IssueDetail = () => {
     return (
         <div className='p-20'>
 
-            <div className='flex justify-center items-center'>
+            <div className='flex flex-col lg:flex-row justify-center items-center space-y-6'>
 
             <div className='flex justify-center'>
 
@@ -84,11 +85,11 @@ const IssueDetail = () => {
         
 </div>
 
-<div className="hero bg-blue-500 min-h-screen">
+<div className="hero bg-blue-500 min-h-screen mt-6">
   <div className="hero-content flex-col lg:flex-row-reverse">
     <img
       src={nycImg}
-      className="max-w-sm rounded-lg shadow-2xl"
+      className=" rounded-lg shadow-2xl"
     />
     <div>
       <h1 className="text-5xl font-bold">Did you know!</h1>

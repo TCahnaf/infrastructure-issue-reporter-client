@@ -12,6 +12,8 @@ import PDF from '../pages/Dashboard/PDF';
 
 const ProfileUpdate = () => {
 
+  document.title = 'user-profile'
+
 
     const axiosSecure = useAxiosSecure();
 
@@ -39,6 +41,17 @@ const handlePayment = async() => {
 
 }
 
+      const {data:displayUser, refetch} = useQuery({
+
+        queryKey: ['userInformation', userInfo?.email],
+        enabled: !!userInfo?.email,
+        queryFn: async () => {
+            const res = await axiosSecure.get(`/user?email=${userInfo?.email}`)
+            return res.data;
+        }
+
+       })
+
 
 
 
@@ -59,7 +72,7 @@ const handlePayment = async() => {
         }
 
         axiosSecure.patch(`/users/${userInfo?._id}`, updatedInfo).then( res => {
-            if (res.data.matchedCount > 0){
+            if (res.data.modifiedCount > 0 || res.data.matchedCount >0){
             refetch();
             updateModal.current.close()
             Swal.fire({
@@ -77,7 +90,7 @@ const handlePayment = async() => {
 
 
 }
-      const {data:payments = []} = useQuery({
+      const {data:payments} = useQuery({
 
         queryKey: ['userPayments', userInfo?.email],
         enabled: !!userInfo?.email,
@@ -87,6 +100,9 @@ const handlePayment = async() => {
         }
 
        })
+
+  
+
 
 
     return (
@@ -100,7 +116,7 @@ const handlePayment = async() => {
 
 
               <div >
-                <img className='h-48 w-48 rounded-full' src= {userInfo?.photo} alt="" />
+                <img className='h-48 w-48 rounded-full' src= {displayUser?.photo} alt="" />
  
 
        </div>

@@ -4,6 +4,7 @@ import useAuth from '../../hooks/useAuth';
 import { useForm } from 'react-hook-form';
 
 const Login = () => {
+  document.title = 'login-page'
    const {register, handleSubmit, formState:{errors}} = useForm();
     const {signIn, googleSignIn} = useAuth();
      const location = useLocation();
@@ -71,7 +72,9 @@ const Login = () => {
 
             
       </div>
+      
     </div>
+    <div className='btn btn-primary'><Link to = "/">Back to home page</Link> </div>
   </div>
 </div>
 

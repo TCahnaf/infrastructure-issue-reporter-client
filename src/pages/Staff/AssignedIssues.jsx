@@ -16,7 +16,7 @@ const AssignedIssues = () => {
 
         queryKey: ['assignedIssues'],
         queryFn: async () => {
-            const res = await axiosSecure.get(`/issues/assigned?email=${userInfo.email}`)
+            const res = await axiosSecure.get(`/issues/assigned?email=${userInfo.email}&size=50`)
             return res.data;
         }
 

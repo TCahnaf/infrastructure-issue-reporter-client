@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 
+
 const AllPayments = () => {
+    document.title = 'user-payments'
 
     const axiosSecure = useAxiosSecure();
     const [sortOrder, setSortOrder] = useState("")
@@ -11,7 +13,7 @@ const AllPayments = () => {
 
         queryKey: ['payments', sortOrder],
         queryFn: async () => {
-            const res = await axiosSecure.get(`/payments?sortBy${sortOrder}}`)
+            const res = await axiosSecure.get(`/payments?sortBy=${sortOrder}`)
             return res.data;
         }
 
@@ -25,21 +27,23 @@ const AllPayments = () => {
 
 
     return (
-        <div>
+        <div className='flex flex-col items-center space-y-6 '>
 
-             <div className='flex flex-col space-y-2'>
-             <label className = "text-2xl">
+             <div className='flex flex-col space-y-2 bg-gray-400 w-full max-w-sm'>
+             <label className = "text-2xl border-b">
     Filter Payments
   </label>
             <select value={sortOrder} onChange = {handleSortOrder}>
-                 <option value="" disabled hidden>Choose order</option>
+                 <option value="">Choose order</option>
                 <option value="low">Low-High</option>
                 <option value="high">High-Low</option>
                
             </select>
             </div>
 
-            <table className="table table-zebra">
+            <div className="overflow-x-auto w-full max-w-[100vw]">
+
+            <table className="table bg-blue-300">
               
                     <thead>
                         <tr>
@@ -66,6 +70,7 @@ const AllPayments = () => {
 
                     </tbody>
                 </table>
+                </div>
 
 
 

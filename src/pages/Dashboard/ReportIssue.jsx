@@ -6,6 +6,7 @@ import axios from 'axios';
 import useAuth from '../../hooks/useAuth';
 import Swal from 'sweetalert2';
 import useCitizenInfo from '../../hooks/useCitizenInfo';
+document.title = 'report-issue'
 
 const ReportIssue = () => {
 
@@ -78,7 +79,7 @@ const handleReport = (data) => {
 
             <form className={userInfo?.status === 'blocked'?"hidden":""} onSubmit = {handleSubmit(handleReport)}>
 
-            <div className="fieldset bg-base-200 border-base-300 rounded-box  border min-h-screen w-[600px] p-8 ">
+            <div className="fieldset bg-base-200 border-base-300 rounded-box  border min-h-screen w-[300px] md:w-[400px] lg:w-[600px] p-8 ">
   <legend className="fieldset-legend">Fill out the form </legend>
 
   

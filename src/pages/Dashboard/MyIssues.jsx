@@ -5,6 +5,7 @@ import useAxiosSecure from '../../hooks/useAxiosSecure';
 import IssueCards from '../../components/IssueCards';
 import useCitizenInfo from '../../hooks/useCitizenInfo';
 import { Link } from 'react-router';
+document.title = 'user-issues'
 
 const MyIssues = () => {
 
@@ -25,13 +26,13 @@ const MyIssues = () => {
     }
 
 
-    const {data:issues = [], refetch} = useQuery({
+    const {data:issues, refetch} = useQuery({
 
         queryKey: ['myIssues', userInfo?.email, category, status],
         enabled: !!userInfo?.email,
 
         queryFn: async () => {
-            const res = await axiosSecure.get(`/issues?email=${userInfo?.email}&category=${category}&status=${status}`)
+            const res = await axiosSecure.get(`/issues?email=${userInfo?.email}&category=${category}&status=${status}&size=50`)
 
             return res.data;
 
@@ -42,6 +43,8 @@ const MyIssues = () => {
 
 
     })
+
+    const userIssues = issues?.result
 
     
 
@@ -57,9 +60,9 @@ const MyIssues = () => {
           
       
 
-            <h1 className='text-center font-bold'>Total number of issues found {issues.length}</h1>
+            <h1 className='text-center text-2xl text-white font-bold'>Total number of issues found {userIssues?.length}</h1>
 
-            <div className='flex gap-5 items-center justify-center '>
+            <div className='flex flex-col lg:flex-row gap-5 items-center justify-center bg-white'>
 
             
 
@@ -67,7 +70,7 @@ const MyIssues = () => {
              <label className = "text-2xl">
     Filter By Categories
   </label>
-            <select value={category} onChange = {handleIssueCategory}>
+            <select className='bg-gray-400' value={category} onChange = {handleIssueCategory}>
                  <option value="">All Categories</option>
                 <option value="infrastructure">Infrastructure Damage</option>
                 <option value="garbage">Garbage overflow</option>
@@ -77,10 +80,10 @@ const MyIssues = () => {
 
               <div className=" flex flex-col space-y-2  ">
   <label className = "text-2xl">
-    Filter Bills By Categories
+    Filter By Status
   </label>
 
-              <select value={status} onChange = {handleIssueStatus}>
+              <select className='bg-gray-400' value={status} onChange = {handleIssueStatus}>
                 <option value="">All Status</option>
                 <option value="pending">Pending</option>
                 <option value="in-progress">In progress</option>
@@ -100,12 +103,12 @@ const MyIssues = () => {
             
 
 
-        <div className='grid grid-cols-2 gap-5 items-center'>
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-5 items-center'>
 
             
 
             {
-                issues.map(issue => <IssueCards key={issue._id} issue={issue} reload={refetch}></IssueCards>)
+                userIssues?.map(issue => <IssueCards key={issue._id} issue={issue} reload={refetch}></IssueCards>)
             }
             
         </div>

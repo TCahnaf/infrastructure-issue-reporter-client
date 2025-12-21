@@ -4,7 +4,9 @@ import { useQuery } from '@tanstack/react-query';
 import Swal from 'sweetalert2';
 import { ImCheckmark } from "react-icons/im";
 
+
 const ManageIssues = () => {
+  document.title = 'all-issues'  
 
     const [selectedStaff, setSelectedStaff] = useState(null)
      const [selectedIssue, setSelectedIssue] = useState(null)
@@ -12,15 +14,18 @@ const ManageIssues = () => {
 
      const axiosSecure = useAxiosSecure();
 
-       const {data:issues = [], refetch} = useQuery({
+       const {data:issues, refetch} = useQuery({
 
         queryKey: ['issues'],
         queryFn: async () => {
-            const res = await axiosSecure.get("/issues")
+            const res = await axiosSecure.get("/issues?size=100")
             return res.data;
         }
 
     })
+    const allIssues = issues?.result;
+
+    
 
       const {data:staffs = [], refetch:refetchStaff} = useQuery({
 
@@ -136,7 +141,7 @@ const ManageIssues = () => {
                     </thead>
                     <tbody>
                         {
-                            issues.map((issue, index) => <tr key={issue._id}>
+                            allIssues?.map((issue, index) => <tr key={issue._id}>
                                 <th>{index + 1}</th>
                                 <td>{issue?.title}</td>
                                 <td>{issue?.category}</td>
@@ -145,8 +150,6 @@ const ManageIssues = () => {
                                 <td>
                                     {!issue.assignedStaffEmail?<button disabled={issue.status === "rejected"} className='btn' onClick = {()=> openStaffModal(issue)}>Assign Staff</button>:<p>{`Assigned Staff:${issue.assignedStaffName}`}</p>}
                                     
-                                    {/* <button disabled = {issue?.assignedStaffEmail} className='btn' onClick = {()=> openStaffModal(issue)}>Assign Staff</button>
-                                {!issue?.assignedStaffName?<p>No Staff Assigned Yet</p>:<p>{`Assigned Staff:${issue.assignedStaffName}`}</p>} */}
                                 </td>
                                 <td className='flex gap-4'>
                                     
@@ -172,7 +175,7 @@ const ManageIssues = () => {
     {
         staffs.map((staff, index) =>  (
             <div className={`border-2 mb-2 flex gap-5 items-center :${selectedStaff?._id === staff._id?"border-blue-500 bg-blue-100":""}`} key={staff._id}>
-                <button onClick={()=> setSelectedStaff(staff)} className='btn square'><ImCheckmark /></button>
+                <button onClick={()=> setSelectedStaff(staff)} className='btn square'>Click to select<ImCheckmark /></button>
                 <p>{index+1}. {staff.name}-{staff.email}</p>
                 
             </div>

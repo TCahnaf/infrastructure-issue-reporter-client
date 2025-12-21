@@ -25,6 +25,7 @@ import DashStats from "../pages/Dashboard/DashStats";
 import DashStatsStaff from "../pages/Dashboard/DashStatsStaff";
 import DashHome from "../pages/Dashboard/DashHome";
 import AboutUs from "../pages/Home/AboutUs";
+import ErrorPage from "../pages/ErrorPage";
 
 
 export const router  = createBrowserRouter([{
@@ -55,6 +56,7 @@ export const router  = createBrowserRouter([{
             path: '/issue/details/:id',
             element:<PrivateRoute><IssueDetail></IssueDetail></PrivateRoute>
         }
+       
     ]},
 
     { path: '/',
@@ -139,5 +141,8 @@ export const router  = createBrowserRouter([{
 
         ]
 
-    }
+    },
+
+    {  path: "*",
+        Component:ErrorPage}
 ]);

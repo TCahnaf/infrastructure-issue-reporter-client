@@ -17,15 +17,15 @@ const Auth = () => {
 
 
 '> 
-            <div className='sticky top-4'>
+            <div className=''>
             <Logo></Logo></div>
-            <div className='flex gap-5 items-center justify-center'>
+            <div className='flex flex-col-reverse lg:flex-row gap-5 items-center justify-center'>
                 <div>
                     <Outlet></Outlet>
                 </div>
 
                 <div>
-                   <img className='h-[300px] w-[800px] rounded-lg' src= {authImg} alt="" />
+                   <img className='mt-3 h-[300px] lg:w-[600px] w-[300px] rounded-lg' src= {authImg} alt="" />
                 </div>
 
 
