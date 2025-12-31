@@ -1,8 +1,21 @@
-🏙️ Rapid City: Public Infrastructure Issue Reporting System
+<h1>🏙️ Rapid City: Public Infrastructure Issue Reporting System</h1>
+
+
 
 Rapid City is a high-performance digital platform designed to bridge the gap between citizens and municipal services. It empowers residents to report real-world infrastructure problems—like potholes, broken streetlights, or water leakages—while providing government staff and admins with a robust dashboard to manage, assign, and resolve these issues in real-time.
 
-🚀 Live Links & Credentials
+
+<img width="976" height="1496" alt="Screenshot 2025-12-30 at 10 07 03 PM" src="https://github.com/user-attachments/assets/8ad6f513-33ac-498f-a1bd-354b3da5ed2f" />
+
+
+
+
+
+
+
+
+<h1>🚀 Live Links</h1>
+
 
 Live Application: https://creative-blancmange-28c47a.netlify.app/
 
@@ -12,12 +25,12 @@ Server Repository: https://github.com/TCahnaf/infrastructure-issue-reporter-serv
 
 
 
+<h1>📌 Project Overview</h1>
 
-📌 Project Overview
 
 The core objective of this system is to improve urban transparency and reduce response times for city maintenance. By centralizing reporting, the platform allows for efficient data collection and analysis of infrastructure health.
 
-✨ Key Features
+<h1>✨ Key Features</h1>
 
 Role-Based Access Control: Secure, specialized dashboards for Admins, Staff, and Citizens.
 
@@ -39,7 +52,7 @@ Automated Invoice Generation: Downloadable PDF invoices for payments using jsPDF
 
 Responsive Design: A fully fluid UI built with Tailwind CSS and DaisyUI, ensuring a seamless experience from iPhone XR to 4K desktops.
 
-🛠 Tech Stack & Tools
+<h1>🛠 Tech Stack & Tools</h1>
 
 Frontend
 
@@ -63,7 +76,7 @@ Authentication: Firebase Auth (Email/Password & Google)
 
 Security: Axios Interceptors for JWT token verification and Role-Based Middleware.
 
-📦 Major Dependencies
+<h1>📦 Major Dependencies</h1>
 
 stripe: Secure payment processing for boosts and subscriptions.
 
@@ -77,30 +90,13 @@ sweetalert2 & react-toastify: Elegant user notifications for all CRUD actions.
 
 swiper: Smooth banner/slider transitions on the homepage.
 
-🛠️ Installation & Local Setup
+<h1>🛠️ Installation & Local Setup</h1>
 
 Clone the repository:
 
-Bash
+git clone https://github.com/TCahnaf/infrastructure-issue-reporter-client.git
 
-git clone https://github.com/TCahnaf/Utility-Bill-Management-System-Client.git
-Install dependencies:
-
-Bash
-
-npm install
-Configure Environment Variables: Create a .env file in the root and add your Firebase and MongoDB credentials:
-
-Code snippet
-
-VITE_FIREBASE_API_KEY=your_key
-VITE_API_URL=http://localhost:3000
-Run the development server:
-
-Bash
-
-npm run dev
-🗺️ How It Works
+<h1>🗺️ How It Works</h1>
 
 Report: Citizen submits an issue with a photo.
 
@@ -112,4 +108,3 @@ Verify: The timeline is updated automatically, and the citizen is notified.
 
 Built with ❤️ for a better, more efficient city.
 
-Would you like me to help you refine the "Extra 2 sections" descriptions for your Home Page?
